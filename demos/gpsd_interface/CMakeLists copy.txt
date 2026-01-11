@@ -1,0 +1,14 @@
+
+
+add_executable(gpsd_interface
+    src/main.cpp
+)
+
+find_library(GPS_LIB gps)
+if(NOT GPS_LIB)
+    message(FATAL_ERROR "libgps not found")
+endif()
+
+include_directories(/usr/include)
+
+target_link_libraries(gpsd_interface PRIVATE ${GPS_LIB})
